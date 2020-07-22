@@ -112,8 +112,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Receive_IT(&huart3, (uint8_t *) getBuffer, 10);//用于重新使能中断接收
-  /* USER CODE END 2 */
+   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -317,6 +316,8 @@ static void MX_USART3_UART_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN USART3_Init 2 */
+  HAL_UART_Receive_IT(&huart3, (uint8_t *) getBuffer, 10);//用于重新使能中断接收
+   
 
   /* USER CODE END USART3_Init 2 */
 
@@ -374,8 +375,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
     UNUSED(huart);
 
-    printf("HAL_UART_RxCpltCallback");//hurat1为串口号
-    HAL_UART_Receive_IT(&huart3, (uint8_t *) getBuffer, 10);
+    HAL_UART_Transmit_IT(&huart3, (uint8_t *) getBuffer, 10);
+    
 }
 
 
