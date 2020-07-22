@@ -170,6 +170,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>huart3</ItemText>
         </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>RxBuffer,0x0A</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>

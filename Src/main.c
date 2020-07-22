@@ -55,6 +55,13 @@ uint16_t Value_loop;//循环计数
 uint32_t Value_Average;//AD平均值
 uint16_t* Value_VREF_CAL;//参考电压
 
+uint8_t RxBuffer[12]= "01234abcde";
+uint8_t TxBuffer[12]= "RECEIVED";
+uint8_t getBuffer[10];
+
+
+
+
 
 /* USER CODE END PV */
 
@@ -105,17 +112,16 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-  
+  HAL_UART_Receive_IT(&huart3, (uint8_t *) getBuffer, 10);//用于重新使能中断接收
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    uint8_t RxBuffer[10]= "01234abcde";
-    HAL_UART_Transmit(&huart1,RxBuffer,10,10);
-    HAL_UART_Transmit(&huart3,RxBuffer,10,10);
-    HAL_Delay(1000);
+ 
+    //HAL_UART_Transmit(&huart1,RxBuffer,10,10);
+
 
     
       // Printinfo_ADC_Value(); 
@@ -359,9 +365,20 @@ void Printinfo_ADC_Value(void)
 
 int fputc(int ch,FILE *f)
 {
-   HAL_UART_Transmit(&huart1,(uint8_t *)&ch,1,0xFFFF);//hurat1为串口号
+   HAL_UART_Transmit(&huart3,(uint8_t *)&ch,1,0xFFFF);//hurat1为串口号
    return ch;
 }
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+
+    UNUSED(huart);
+
+    printf("HAL_UART_RxCpltCallback");//hurat1为串口号
+    HAL_UART_Receive_IT(&huart3, (uint8_t *) getBuffer, 10);
+}
+
+
 
 
 

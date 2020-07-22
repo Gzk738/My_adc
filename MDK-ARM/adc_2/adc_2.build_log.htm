@@ -27,15 +27,14 @@ Project File Date:  07/22/2020
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\software\Keil\ARM\ARMCC\Bin'
 Build target 'adc_2'
-compiling stm32l4xx_it.c...
+compiling main.c...
 ../Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_flash.h(844): warning:  #47-D: incompatible redefinition of macro "FLASH_SIZE"  (declared at line 940 of "D:\software\Keil\Packs\Keil\STM32L4xx_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32L4xx\Include\stm32l431xx.h")
   #define FLASH_SIZE                         ((((*((uint32_t *)FLASH_SIZE_DATA_REGISTER)) == 0xFFFFU)) ? (0x400U << 10U) : \
-../Src/stm32l4xx_it.c(210): error:  #20: identifier "huart1" is undefined
-    HAL_UART_Receive_IT(&huart1,(uint8_t *)&RxBuffer,12); //重新打开串口中断
-../Src/stm32l4xx_it.c(210): error:  #20: identifier "RxBuffer" is undefined
-    HAL_UART_Receive_IT(&huart1,(uint8_t *)&RxBuffer,12); //重新打开串口中断
-../Src/stm32l4xx_it.c: 1 warning, 2 errors
-"adc_2\adc_2.axf" - 2 Error(s), 1 Warning(s).
+../Src/main.c: 1 warning, 0 errors
+linking...
+Program Size: Code=11820 RO-data=500 RW-data=12 ZI-data=1380  
+FromELF: creating hex file...
+"adc_2\adc_2.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -58,7 +57,6 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.4.0
-Target not created.
 Build Time Elapsed:  00:00:02
 </pre>
 </body>
