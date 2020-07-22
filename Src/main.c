@@ -112,10 +112,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    uint8_t TxData[10]= "01234abcde";
-    HAL_UART_Transmit(&huart1,TxData,10,10);
-    HAL_UART_Transmit(&huart3,TxData,10,10);
-       
+    uint8_t RxBuffer[10]= "01234abcde";
+    HAL_UART_Transmit(&huart1,RxBuffer,10,10);
+    HAL_UART_Transmit(&huart3,RxBuffer,10,10);
+    HAL_Delay(1000);
 
     
       // Printinfo_ADC_Value(); 
